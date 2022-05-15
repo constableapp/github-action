@@ -24,7 +24,7 @@ jobs:
           author_name: Constable Releaser
           author_email: info@constableapp.com
           message: ${{ github.event.inputs.version }}
-          new_branch: ${{ github.event.inputs.version }}
+          new_branch: '${{ github.event.inputs.version }}'
           push: true
-          tag: '${{ github.event.inputs.version }}'
+          tag: '${{ github.event.inputs.version }} --force'
           tag_push: '--force'
