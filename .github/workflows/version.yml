@@ -1,0 +1,29 @@
+name: Constable CLI Release 
+
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version Number (semantic version)'     
+        required: true
+
+jobs:
+  package_cli:
+    name: Package CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Replace version
+        run: sed -i 's#ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest/ghcr.io/bigbadwolfsecurity/brickhouse/cli:${{ github.event.inputs.version }}/g' action.yml
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: 'action.yml'
+          author_name: Constable Releaser
+          author_email: info@constableapp.com
+          message: ${{ github.event.inputs.version }}
+          new_branch: ${{ github.event.inputs.version }}
+          push: true
+          tag: '${{ github.event.inputs.version }}'

@@ -15,7 +15,7 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
   args:
     - ${{ inputs.terraform-module-root }}
     - ${{ inputs.aws-access-key-id }}
