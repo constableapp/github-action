@@ -26,4 +26,5 @@ jobs:
           message: ${{ github.event.inputs.version }}
           new_branch: ${{ github.event.inputs.version }}
           push: true
-          tag: '${{ github.event.inputs.version }} --force'
+          tag: '${{ github.event.inputs.version }}'
+          tag_push: '--force'
