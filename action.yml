@@ -10,9 +10,6 @@ inputs:
   aws-secret-access-key: 
     description: 'AWS_SECRET_ACCESS_KEY'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
@@ -21,9 +18,9 @@ runs:
     - ${{ inputs.terraform-module-root }}
     - --force
     - --github_ref
-    - ${{GITHUB_REF}}
+    - ${{ env.GITHUB_REF }}
     - --github_repository
-    - ${{$GITHUB_REPOSITORY}}
+    - ${{ env.GITHUB_REPOSITORY }}
   env: 
     AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
     AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
