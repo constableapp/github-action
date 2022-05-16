@@ -10,6 +10,12 @@ inputs:
   aws-secret-access-key: 
     description: 'AWS_SECRET_ACCESS_KEY'
     required: true
+  github-ref:
+    description: "Pass the GITHUB_REF environment variable"
+    required: true
+  github-repository:
+    description: "Pass the GITHUB_REPOSITORY environment variable"
+    required: true
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
@@ -18,9 +24,9 @@ runs:
     - ${{ inputs.terraform-module-root }}
     - --force
     - --github_ref
-    - ${{ github.event.ref }}
+    - ${{ inputs.github-ref }}
     - --github_repository
-    - ${{ github.event.repo.name }}
+    - ${{ inputs.github-repository }}
   env: 
     AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
     AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
