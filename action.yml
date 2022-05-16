@@ -26,7 +26,7 @@ runs:
     - analyze
     - ${{ inputs.terraform-module-root }}
     - --force
-    - --api-key
+    - --api_key
     - ${{ inputs.constable-api-key }}
     - --github_ref
     - ${{ inputs.github-ref }}
