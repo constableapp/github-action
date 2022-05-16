@@ -1,6 +1,9 @@
 name: 'Constable Analyze'
 description: 'Run Constable Analyze'
 inputs:
+  constable-api-key: 
+    description: 'Your constable API Key'
+    required: true
   terraform-module-root: 
     description: 'root of the terraform file'
     required: true
@@ -23,6 +26,8 @@ runs:
     - analyze
     - ${{ inputs.terraform-module-root }}
     - --force
+    - --api-key
+    - ${{ inputs.constable-api-key }}
     - --github_ref
     - ${{ inputs.github-ref }}
     - --github_repository
