@@ -18,9 +18,9 @@ runs:
     - ${{ inputs.terraform-module-root }}
     - --force
     - --github_ref
-    - ${{ env.GITHUB_REF }}
+    - ${{ github.event.ref }}
     - --github_repository
-    - ${{ env.GITHUB_REPOSITORY }}
+    - ${{ github.event.repo.name }}
   env: 
     AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
     AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
