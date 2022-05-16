@@ -15,8 +15,15 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
+  image: 'docker://ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
   args:
+    - analyze
     - ${{ inputs.terraform-module-root }}
-    - ${{ inputs.aws-access-key-id }}
-    - ${{ inputs.aws-secret-access-key }}
+    - --force
+    - --github_ref
+    - ${{GITHUB_REF}}
+    - --github_repository
+    - ${{$GITHUB_REPOSITORY}}
+  env: 
+    AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+    AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}

@@ -18,7 +18,8 @@ jobs:
       - name: Replace version
         run: sed -i 's#ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest#ghcr.io/bigbadwolfsecurity/brickhouse/cli:${{ github.event.inputs.version }}#g' action.yml
 
-      - uses: EndBug/add-and-commit@v9
+      - name: Tag and Push Version
+        uses: EndBug/add-and-commit@v9
         with:
           add: 'action.yml'
           author_name: Constable Releaser
