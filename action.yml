@@ -21,7 +21,7 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/bigbadwolfsecurity/brickhouse/cli:latest'
+  image: 'docker://ghcr.io/bigbadwolfsecurity/brickhouse/cli:v0.0.12-alpha.49f00f8c'
   args:
     - analyze
     - ${{ inputs.terraform-module-root }}
