@@ -18,6 +18,9 @@ inputs:
     required: true
   github-repository:
     description: "Pass the GITHUB_REPOSITORY environment variable"
+    required: true  
+  github-sha:
+    description: "Pass the GITHUB_SHA environment variable"
     required: true
 runs:
   using: 'docker'
@@ -32,6 +35,8 @@ runs:
     - ${{ inputs.github-ref }}
     - --github_repository
     - ${{ inputs.github-repository }}
+    - --github_sha
+    - ${{ inputs.github-sha }}
   env: 
     AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
     AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
